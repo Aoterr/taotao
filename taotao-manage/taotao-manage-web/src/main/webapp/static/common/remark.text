@@ -1,0 +1,8 @@
+<%@ include file="/static/common/taglibs.jsp"%>
+<%@ include file="/static/common/meta.jsp"%>
+
+<%@ include file="/static/common/jscsslibs/jquery.jsp"%>
+<%@ include file="/static/common/jscsslibs/easyui.jsp"%>
+<%@ include file="/static/common/jscsslibs/commonutil.jsp"%>
+<%@ include file="/static/common/jscsslibs/jqueryvalidate.jsp"%>
+<%@ include file="/static/common/jscsslibs/tools.jsp"%>

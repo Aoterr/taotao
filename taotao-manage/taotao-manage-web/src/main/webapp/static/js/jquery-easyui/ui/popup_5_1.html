@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link href="css/base.css" rel="stylesheet" type="text/css" />
+	<link href="css/layout.css" rel="stylesheet" type="text/css" />
+	<link href="css/jquery.ad-gallery.css" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript" src="../jquery-1.2.6.js"></script>
+	<script type="text/javascript" src="../jquery.ad-gallery.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+  
+    var galleries = $('.ad-gallery').adGallery({
+		slideshow: {
+                       enable: false,
+                       autostart: false,
+                       speed: 5000,
+                       start_label: 'Start',
+                       stop_label: 'Stop',
+                       stop_on_scroll: true,
+                       countdown_prefix: '(',
+                       countdown_sufix: ')',
+                       onStart: false,
+                       onStop: false
+                     }
+	});
+	//显示大图
+	$(".ad-thumb-list li img").dblclick(function(){
+	   $(".ad-image-wrapper").show();
+	});
+	
+  });
+  </script>
+
+  <title>A demo of AD Gallery - Coffeescripter.com</title>
+</head>
+<body>
+  <div class="easyui-window" title="图片浏览" icon="icon-search" style="height:350px;width:700px;">
+    
+  <div id="container" align="center">
+  <div id="gallery" class="ad-gallery">
+		<div style="padding-bottom:20px;" align="left">企业相册浏览</div>
+      <!-- 大图片显示(必填项) -->
+      <div class="ad-image-wrapper" style="">
+      </div>
+      
+      <!-- 小图片显示 -->
+      <div class="ad-nav">
+        <div class="ad-thumbs">
+          <ul class="ad-thumb-list">
+            <li>
+			  <a href="img/6.gif">
+					<img src="img/6.gif" title="1" width="111" height="145" longdesc="消息" class="image5"/>
+			  </a>
+			</li>
+            <li>
+			  <a href="img/6.gif">
+					<img src="img/6.gif" title="2" width="111" height="145" longdesc="消息" class="image5"/>
+			  </a>
+			</li>
+            <li>
+			  <a href="img/6.gif">
+					<img src="img/6.gif" title="3" width="111" height="145" longdesc="消息" class="image5"/>
+			  </a>
+			</li>
+            <li>
+			  <a href="img/6.gif">
+					<img src="img/6.gif" title="4" width="111" height="145" longdesc="消息" class="image5"/>
+			  </a>
+			</li>
+            <li>
+			  <a href="img/6.gif">
+					<img src="img/6.gif" title="5" width="111" height="145" longdesc="消息" class="image5"/>
+			  </a>
+			</li>
+            <li>
+			  <a href="img/6.gif">
+					<img src="img/6.gif" title="6" width="111" height="145" longdesc="消息" class="image5"/>
+			  </a>
+			</li>
+            <li>
+			  <a href="img/6.gif">
+					<img src="img/6.gif" title="7" width="111" height="145" longdesc="消息" class="image5"/>
+			  </a>
+			</li>
+            <li>
+			  <a href="img/6.gif">
+					<img src="img/6.gif" title="8" width="111" height="145" longdesc="消息" class="image5"/>
+			  </a>
+			</li>
+            <li>
+			  <a href="img/6.gif">
+					<img src="img/6.gif" title="9" width="111" height="145" longdesc="消息" class="image5"/>
+			  </a>
+			</li>
+            <li>
+			  <a href="img/6.gif">
+					<img src="img/6.gif" title="10" width="111" height="145" longdesc="消息" class="image5"/>
+			  </a>
+			</li>
+          </ul>
+        </div>
+      </div>
+      <!-- 小图片显示 -->
+	  <!-- 控制按钮显示 -->
+      <div class="ad-controls" align="center" style="padding-top:20px;">
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+</html>

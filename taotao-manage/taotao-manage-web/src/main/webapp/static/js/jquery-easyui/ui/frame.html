@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>jQuery EasyUI</title>
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link href="../themes/particular.css" rel="stylesheet" type="text/css" />
+	
+	<script type="text/javascript" src="../jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="../locale/easyui-lang-zh_CN.js"></script>
+	
+	
+	<script>
+		$(function(){
+			$('#tt2').datagrid({
+				//title:'列表区域',
+				width:600,
+				height:350,
+		        headerCls:"header_cls",/*为啥这就有效呢？*/
+				nowrap: false,
+				striped: true,
+				fit: true,
+				border:false,
+				url:'datagrid_data.json',
+				sortName: 'code',
+				sortOrder: 'desc',
+				idField:'code',
+				frozenColumns:[[
+	                {field:'ck',checkbox:true},
+	                {title:'编码',field:'code',align:'center',width:$(this).width() * 0.1,sortable:true}
+				]],
+				columns:[[
+			        {title:'基本信息',colspan:3},
+					{field:'opt',title:'操作',width:$(this).width() * 0.1,align:'center', rowspan:2,
+						formatter:function(value,rec){
+							return '<span style="color:red">Edit Delete</span>';
+						}
+					}
+				],[
+					{field:'name',title:'姓名',align:'center',width:$(this).width() * 0.16},
+					{field:'addr',title:'地址',align:'center',width:$(this).width() * 0.16,rowspan:2,sortable:true},
+					{field:'col4',title:'代号',align:'center',width:$(this).width() * 0.16,rowspan:2}
+				]],
+				pagination:true,//是不是添加分页
+				rownumbers:true,
+				toolbar:[{
+					id:'btnadd',
+					text:'新增组名',
+					iconCls:'icon-group-add',
+					handler:function(){
+						$('#btnsave').linkbutton('enable');
+						alert('add');
+					}
+				},'-',{
+					id:'btncut',
+					text:'分组编辑',
+					iconCls:'icon-group-edit',
+					handler:function(){
+						$('#btnsave').linkbutton('enable');
+						alert('cut');
+					}
+				},'-',{
+					id:'btnsave',
+					text:'删除组',
+					iconCls:'icon-group-delete',
+					handler:function(){
+						$('#btnsave').linkbutton('disable');
+						alert('save');
+					}
+				},'->',{
+					id:'btn_import',
+					text:'导入',
+					iconCls:'icon-import',
+					handler:function(){
+						$('#btnsave').linkbutton('disable');
+						alert('save');
+					}
+				},'-',{
+					id:'btn_add',
+					text:'添加',
+					iconCls:'icon-add',
+					handler:function(){
+						$('#btnsave').linkbutton('disable');
+						alert('save');
+					}
+				}]
+			});
+
+
+			$(".left_nav_col li").click(function(){
+				$(".left_nav_colbg").removeClass("left_nav_colbg");
+				$(this).addClass("left_nav_colbg");
+			});
+
+			//树
+			$('#tt_tree').tree({
+				checkbox: false,
+				animate:"true",
+				url: 'tree_data.json',
+				onClick:function(node){
+					$(this).tree('toggle', node.target);
+				},
+				onExpand:function(){//此事件是为了使当鼠标移到节点上时的背景颜色足够长
+					$(this).width($(this).parent().get(0).scrollWidth);
+				}
+			});
+			//top标签选中
+			
+		   $('body').layout();
+	       $('body').css('visibility', 'visible');
+		});
+		function addmenu(){
+			var header = $('.layout-expand .layout-button-down').parent().parent();
+			var menu = $('<div style="position:absolute;left:0;top:0;background:#fafafa;"></div>').appendTo(header);
+			var btn = $('<a href="#">test</a>').appendTo(menu);
+			btn.menubutton({
+				menu:'#mymenu'
+			});
+		}
+	</script>
+  </head>
+  
+
+<body class="easyui-layout" style="visibility: hidden;">
+	
+	<!-- 头部 -->
+	<div region="north" border="false"  split="false" style="height:70px;padding:0;margin:0;">
+	    <div class="head_bg">
+			<div class="head_logo">
+				<div class="head_t">
+					<div class="head_t_msg">欢迎您，管理员！</div>
+					<div class="head_t_if">
+						<div class="head_t_img"><img src="images/head_ico.jpg" width="12" height="11" /></div>
+						<div class="head_t_font"><a href="#">注销</a></div>
+						<div class="head_t_img"><img src="images/head_ico1.jpg" width="14" height="11" /></div>
+						<div class="head_t_font"><a href="#">皮肤</a></div>
+					</div>
+				</div>
+			</div>
+			<div class="head_right">
+				<div class="head_btn1"><a href="#"></a></div>
+				<div class="head_btn2"><a href="#"></a></div>
+				<div class="head_btn3"><a href="#"></a></div>
+				<div class="head_btn4"><a href="#"></a></div>
+			</div>
+		</div>
+	</div>
+	<!-- 底部 -->
+	<div region="south" border="false" split="true" style="height:30px;padding:0px;background:#f5f5f5;">
+		<div class="bottom">
+			<div class="bottom_font" align="center">&copy; 1998-2010 中兴通讯股份有限公司 版权所有  Copyright&copy;2010 All Right Reserved</div>
+		</div>
+	</div>
+	<!--左部的菜单-->	
+	<div region="west" border="true" split="true" title="菜单栏" icon="icon-menu" style="width:200px;padding1:1px;">
+		<div class="easyui-accordion" fit="true" border="false" style="background: url(images/left_bg.jpg)">
+			<div title="基础数据管理" headerCls="accordion-font-color" icon="icon-accordion-node"  selected="true" style="overflow:auto;padding:5px;">
+				<ul class="left_nav_col">
+				  <li>
+					  <div class="left_nav_colimg"><img src="images/nav_ico_1.gif" width="42" height="34" /></div>
+					  <div class="left_nav_colfont"><a href="#">数据源文件</a></div>
+				  </li>
+				  <li class="left_nav_colbg">
+					  <div class="left_nav_colimg"><img src="images/nav_ico_2.gif" width="32" height="33"/></div>
+					  <div class="left_nav_colfont"><a href="#">数据源文件</a></div>
+				  </li>
+				</ul>
+			</div>
+			<div title="基础数据管理" id="tree_s" headerCls="accordion-font-color"  icon="icon-accordion-node" >
+				<ul id="tt_tree" style="padding:10px;"></ul>
+			</div>
+			<div title="基础数据管理" headerCls="accordion-font-color"  icon="icon-accordion-node" style="padding:10px;">
+				content2
+				<a href="#" onclick="addmenu()">addmenu</a>
+			</div>
+			
+		</div>
+	</div>
+	<!-- 右部主框架 -->
+	<div region="center" border="false" style="overflow:hidden;">
+		<div class="easyui-tabs" fit="true" border="true">
+			<div title="栏目示意页面3"  icon="icon-tab" border="true" closable="true" style="overflow:hidden;padding:0px;">
+				<table id="tt2"></table> 
+			</div>
+			<div title="栏目示意页面1" icon="icon-tab-next" style="padding:20px;overflow:hidden;" border="true"> 
+				<div style="margin-top:10px;">
+					<h3>jQuery EasyUI framework help you build your web page easily.</h3>
+					<li>easyui is a collection of user-interface plugin based on jQuery.</li> 
+					<li>using easyui you don't write many javascript code, instead you defines user-interface by writing some HTML markup.</li> 
+					<li>easyui is very easy but powerful.</li> 
+					<li><input type="checkbox"></li>
+				</div>
+			</div>
+			<div title="栏目示意页面2" icon="icon-tab" closable="true" style="padding:20px;" border="true">This is Tab2 width close button.</div>
+			<div title="栏目示意页面4" icon="icon-tab" closable="true" style="padding:20px;" border="true">This is Tab4 width close button.</div>
+			<div title="栏目示意页面5" icon="icon-tab" closable="true" style="padding:20px;" border="true">This is Tab5 width close button.</div>
+			<div title="栏目示意页面6" icon="icon-tab" closable="true" style="padding:20px;" border="true">This is Tab6 width close button.</div>
+			<div title="栏目示意页面7" icon="icon-tab" closable="true" style="padding:20px;" border="true">This is Ta7 width close button.</div>
+			<div title="栏目示意页面8" icon="icon-tab" closable="true" style="padding:20px;" border="true">This is Ta8 width close button.</div>
+			<div title="栏目示意页面9" icon="icon-tab" closable="true" style="padding:20px;" border="true">This is Tab9width close button.</div>
+			<div title="栏目示意页面10" icon="icon-tab" closable="true" style="padding:20px;" border="true">This is Tab10 width close button.</div>
+			<div title="栏目示意页面11" icon="icon-tab" closable="true" style="padding:20px;" border="true">This is Tab11 width close button.</div>
+			<div title="栏目示意页面12" icon="icon-tab" closable="true" style="padding:20px;" border="true">This is Tab12 width close button.</div>
+			<div title="栏目示意页面13" icon="icon-tab" closable="true" style="padding:20px;" border="true">This is Tab13 width close button.</div>
+			<div title="栏目示意页面14" icon="icon-tab" closable="true" style="padding:20px;" border="true">This is Tab14 width close button.</div>
+			<div title="栏目示意页面15" icon="icon-tab" closable="true" style="padding:20px;" border="true">This is Tab16 width close button.</div>
+			<div title="栏目示意页面16" icon="icon-tab" closable="true" style="padding:20px;" border="true">This is Tab15 width close button.</div>
+			<div title="栏目示意页面17" icon="icon-tab" closable="true" style="padding:20px;" border="true">This is Tab17 width close button.</div>
+			<div title="栏目示意页面18" icon="icon-tab" closable="true" style="padding:20px;" border="true">This is Tab18 width close button.</div>
+			<div title="栏目示意页面19" icon="icon-tab" closable="true" style="padding:20px;" border="true">This is Tab19 width close button.</div>
+			
+		</div>
+	</div>
+</body>
+</html>

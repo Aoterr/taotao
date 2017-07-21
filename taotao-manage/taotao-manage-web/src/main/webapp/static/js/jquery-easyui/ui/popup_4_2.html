@@ -1,0 +1,59 @@
+
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link href="css/base.css" rel="stylesheet" type="text/css" />
+	<link href="css/layout.css" rel="stylesheet" type="text/css" />
+	<link href="css/jquery.ad-gallery.css" rel="stylesheet" type="text/css" />
+    <style>
+	    div.fileinputs {
+			position: relative;
+			float:left;
+		}
+
+		div.fakefile {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			z-index: 1;
+		}
+
+		input.file {
+			position: relative;
+			text-align: right;
+			-moz-opacity:0 ;
+			filter:alpha(opacity: 0);
+			opacity: 0;
+			z-index: 2;
+		}
+	</style>
+	<script type="text/javascript" src="../jquery-1.2.6.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="../jquery.ad-gallery.js"></script>
+  <script type="text/javascript">
+  </script>
+
+  <title>A demo of AD Gallery - Coffeescripter.com</title>
+</head>
+<body>
+  <div class="easyui-window" title="Í¼Æ¬ä¯ÀÀ" icon="icon-search" style="height:350px;width:700px;">
+    <div style="margin:10px;">
+	
+    <label for="file" style="float:left;">¸½&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;¼þ£º</label>
+	<div class="fileinputs">
+	<input type="file" class="file" />
+	<div class="fakefile">
+		<input />
+		<img src="images/pop_up_btn.jpg" />
+	</div><br>
+    <label for="file">¸½¼þÃû³Æ£º</label> <input type="text" id="file" size="60" style="margin-top:10px;">
+    </div>
+   
+	
+</div>
+  </div>
+</body>
+</html>
+
+
