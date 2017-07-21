@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>jQuery EasyUI</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+<link href="css/base.css" rel="stylesheet" type="text/css" />
+<link href="css/layout.css" rel="stylesheet" type="text/css" />
+	<style rel="stylesheet" type="text/css">
+	   .panel_header{
+		padding:5px;
+		padding-left:10px;/*accordion让标题与图标的距离远一些*/
+		line-height:15px;
+		/*color:#15428b;*//*修改accordion标题的颜色,所以注释了*/
+		color:black;/*accordion标题的颜色*/
+		font-size:12px;
+		background:#efefef url('../themes/default/images/page_bg_s.jpg') repeat-x;
+		position:relative;
+		border:1px solid #E4E4E4;/*将所有的上边框颜色99BBE8改成E4E4E4*/
+	   }
+	</style>
+
+	<script type="text/javascript" src="../jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<script type="text/javascript">
+	   $(function(){
+	       $(".pop_sear_con li a").click(function(){
+		       $(".pop_sear_a").removeClass();
+		       $(this).addClass("pop_sear_a");
+		   });
+	   });
+	</script>
+</head>
+<body style="background:#fafafa;">
+	<div id="p" class="easyui-window" icon="icon-search" title="搜索页" style="width:600px;height:400px;">
+		<div class="easyui-layout">
+		    <div region="north" style="height:30px;margin:10px;" border="false">
+			    <!-- 搜索框开始 -->
+			    <div class="pop_sear">
+					<div class="pop_sear_ft">搜索：</div>
+					<div class="pop_sear_inp">
+						<input name="textfield" type="text" class="pop_sear_input" />
+					</div>
+					<div class="pop_sear_btn"><a href="#"></a></div>
+				</div>
+				<!-- 搜索框结束 -->
+			</div>
+			<div region="center" style="height:100px;margin:10px;" border="false">
+				<!-- 搜索按钮开始 -->
+				<ul class="pop_sear_con">
+					<li><a href="#">程序语言</a></li>
+					<li><a href="#">噪声监测</a></li>
+					<li><a href="#">环保业务分类</a></li>
+					<li> <a href="#">水资源监测</a> </li>
+					<li><a href="#">环保业务分类</a> </li>
+				</ul>
+				<ul class="pop_sear_con">
+					<li><a href="#">程序语言</a></li>
+					<li><a href="#">噪声监测</a></li>
+					<li><a href="#">环保业务分类</a></li>
+					<li> <a href="#">水资源监测</a> </li>
+					<li class="pop_sear_a"><a href="#">环保业务分类</a> </li>
+				</ul>
+				<!-- 搜索按钮结束 -->
+			</div>
+		</div>
+	</div>
+</body>
+</html>
