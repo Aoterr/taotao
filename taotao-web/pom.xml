@@ -4,12 +4,11 @@
         <artifactId>taotao-parent</artifactId>
         <groupId>com.taotao.parent</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../taotao-parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>taotao-web</artifactId>
     <packaging>war</packaging>
-    <name>taotao-web Maven Webapp</name>
+    <name>taotao-web</name>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
