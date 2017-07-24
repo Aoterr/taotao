@@ -1,4 +1,4 @@
-package com.taotao.manage.service;
+package com.taotao.sso.service;
 
 /**
  * Created by YMSX30004 on 2016/12/29.

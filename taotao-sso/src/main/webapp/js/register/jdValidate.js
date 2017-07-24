@@ -20,6 +20,7 @@ function pwdLevel(value) {
     }
     return level;
 }
+
 // 休眠
 function sleepm(numberMillis) {
     var now = new Date();
@@ -29,14 +30,17 @@ function sleepm(numberMillis) {
         if (now.getTime() > exitTime) return;
     }
 }
+
 var weakPwdArray = ["123456", "123456789", "111111", "5201314", "12345678", "123123", "password", "1314520", "123321", "7758521", "1234567", "5211314", "666666", "520520", "woaini", "520131", "11111111", "888888", "hotmail.com", "112233", "123654", "654321", "1234567890", "a123456", "88888888", "163.com", "000000", "yahoo.com.cn", "sohu.com", "yahoo.cn", "111222tianya", "163.COM", "tom.com", "139.com", "wangyut2", "pp.com", "yahoo.com", "147258369", "123123123", "147258", "987654321", "100200", "zxcvbnm", "123456a", "521521", "7758258", "111222", "110110", "1314521", "11111111", "12345678", "a321654", "111111", "123123", "5201314", "00000000", "q123456", "123123123", "aaaaaa", "a123456789", "qq123456", "11112222", "woaini1314", "a123123", "a111111", "123321", "a5201314", "z123456", "liuchang", "a000000", "1314520", "asd123", "88888888", "1234567890", "7758521", "1234567", "woaini520", "147258369", "123456789a", "woaini123", "q1q1q1q1", "a12345678", "qwe123", "123456q", "121212", "asdasd", "999999", "1111111", "123698745", "137900", "159357", "iloveyou", "222222", "31415926", "123456", "111111", "123456789", "123123", "9958123", "woaini521", "5201314", "18n28n24a5", "abc123", "password", "123qwe", "123456789", "12345678", "11111111", "dearbook", "00000000", "123123123", "1234567890", "88888888", "111111111", "147258369", "987654321", "aaaaaaaa", "1111111111", "66666666", "a123456789", "11223344", "1qaz2wsx", "xiazhili", "789456123", "password", "87654321", "qqqqqqqq", "000000000", "qwertyuiop", "qq123456", "iloveyou", "31415926", "12344321", "0000000000", "asdfghjkl", "1q2w3e4r", "123456abc", "0123456789", "123654789", "12121212", "qazwsxedc", "abcd1234", "12341234", "110110110", "asdasdasd", "123456", "22222222", "123321123", "abc123456", "a12345678", "123456123", "a1234567", "1234qwer", "qwertyui", "123456789a", "qq.com", "369369", "163.com", "ohwe1zvq", "xiekai1121", "19860210", "1984130", "81251310", "502058", "162534", "690929", "601445", "1814325", "as1230", "zz123456", "280213676", "198773", "4861111", "328658", "19890608", "198428", "880126", "6516415", "111213", "195561", "780525", "6586123", "caonima99", "168816", "123654987", "qq776491", "hahabaobao", "198541", "540707", "leqing123", "5403693", "123456", "123456789", "111111", "5201314", "123123", "12345678", "1314520", "123321", "7758521", "1234567", "5211314", "520520", "woaini", "520131", "666666", "RAND#a#8", "hotmail.com", "112233", "123654", "888888", "654321", "1234567890", "a123456"];
 
 function verc() {
     $("#JD_Verification1").click();
 }
+
 function verc2() {
     $("#JD_Verification2").click();
 }
+
 var validateRegExp = {
     decmal: "^([+-]?)\\d*\\.\\d+$",
     // 浮点数
@@ -114,8 +118,8 @@ var validateRegExp = {
     companysite: "^http[s]?:\\/\\/([\\w-]+\\.)+[\\w-]+([\\w-./?%&#=]*)?$"
 };
 // 主函数
-(function($) {
-    $.fn.jdValidate = function(option, callback, def) {
+(function ($) {
+    $.fn.jdValidate = function (option, callback, def) {
         var ele = this;
         var id = ele.attr("id");
         var type = ele.attr("type");
@@ -129,12 +133,12 @@ var validateRegExp = {
             var tag = ele.attr("sta");
             if (str == "" || str == "-1") {
                 validateSettings.isNull.run({
-                    prompts: option,
-                    element: ele,
-                    isNullEle: _isNull,
-                    succeedEle: _succeed
-                },
-                option.isNull);
+                        prompts: option,
+                        element: ele,
+                        isNullEle: _isNull,
+                        succeedEle: _succeed
+                    },
+                    option.isNull);
             } else if (tag == 1 || tag == 2) {
                 return;
             } else {
@@ -156,76 +160,76 @@ var validateRegExp = {
                 }
             }
             switch (type) {
-            case "text":
-            case "password":
-                ele.bind("focus",
-                function() {
-                    var str = ele.val();
-                    if (str == def) {
-                        ele.val("");
-                    }
-                    validateSettings.onFocus.run({
-                        prompts: option,
-                        element: ele,
-                        value: str,
-                        onFocusEle: _onFocus,
-                        succeedEle: _succeed
-                    },
-                    option.onFocus, option.onFocusExpand);
-                }).bind("blur",
-                function() {
-                    var str = ele.val();
-                    if (str == "") {
-                        ele.val(def);
-                    }
-                    if (validateRules.isNull(str)) {
-                        validateSettings.isNull.run({
-                            prompts: option,
-                            element: ele,
-                            value: str,
-                            isNullEle: _isNull,
-                            succeedEle: _succeed
-                        },
-                        "");
+                case "text":
+                case "password":
+                    ele.bind("focus",
+                        function () {
+                            var str = ele.val();
+                            if (str == def) {
+                                ele.val("");
+                            }
+                            validateSettings.onFocus.run({
+                                    prompts: option,
+                                    element: ele,
+                                    value: str,
+                                    onFocusEle: _onFocus,
+                                    succeedEle: _succeed
+                                },
+                                option.onFocus, option.onFocusExpand);
+                        }).bind("blur",
+                        function () {
+                            var str = ele.val();
+                            if (str == "") {
+                                ele.val(def);
+                            }
+                            if (validateRules.isNull(str)) {
+                                validateSettings.isNull.run({
+                                        prompts: option,
+                                        element: ele,
+                                        value: str,
+                                        isNullEle: _isNull,
+                                        succeedEle: _succeed
+                                    },
+                                    "");
+                            } else {
+                                callback({
+                                    prompts: option,
+                                    element: ele,
+                                    value: str,
+                                    errorEle: _error,
+                                    isNullEle: _isNull,
+                                    succeedEle: _succeed
+                                });
+                            }
+                        });
+                    break;
+                default:
+                    if (rel && rel == "select") {
+                        ele.bind("change",
+                            function () {
+                                var str = ele.val();
+                                callback({
+                                    prompts: option,
+                                    element: ele,
+                                    value: str,
+                                    errorEle: _error,
+                                    isNullEle: _isNull,
+                                    succeedEle: _succeed
+                                });
+                            })
                     } else {
-                        callback({
-                            prompts: option,
-                            element: ele,
-                            value: str,
-                            errorEle: _error,
-                            isNullEle: _isNull,
-                            succeedEle: _succeed
-                        });
+                        ele.bind("click",
+                            function () {
+                                callback({
+                                    prompts: option,
+                                    element: ele,
+                                    errorEle: _error,
+                                    isNullEle: _isNull,
+                                    succeedEle: _succeed
+                                });
+                            })
                     }
-                });
-                break;
-            default:
-                if (rel && rel == "select") {
-                    ele.bind("change",
-                    function() {
-                        var str = ele.val();
-                        callback({
-                            prompts: option,
-                            element: ele,
-                            value: str,
-                            errorEle: _error,
-                            isNullEle: _isNull,
-                            succeedEle: _succeed
-                        });
-                    })
-                } else {
-                    ele.bind("click",
-                    function() {
-                        callback({
-                            prompts: option,
-                            element: ele,
-                            errorEle: _error,
-                            isNullEle: _isNull,
-                            succeedEle: _succeed
-                        });
-                    })
-                }
-                break;
+                    break;
             }
         }
     }
@@ -237,7 +241,7 @@ var validateSettings = {
         state: null,
         container: "_error",
         style: "focus",
-        run: function(option, str, expands) {
+        run: function (option, str, expands) {
             if (!validateRules.checkType(option.element)) {
                 option.element.removeClass(validateSettings.INPUT_style2).addClass(validateSettings.INPUT_style1);
             }
@@ -252,7 +256,7 @@ var validateSettings = {
         state: 0,
         container: "_error",
         style: "null",
-        run: function(option, str) {
+        run: function (option, str) {
             option.element.attr("sta", 0);
             if (!validateRules.checkType(option.element)) {
                 if (str == "") {
@@ -274,7 +278,7 @@ var validateSettings = {
         state: 1,
         container: "_error",
         style: "error",
-        run: function(option, str) {
+        run: function (option, str) {
             option.element.attr("sta", 1);
             if (!validateRules.checkType(option.element)) {
                 option.element.removeClass(validateSettings.INPUT_style1).addClass(validateSettings.INPUT_style2);
@@ -288,7 +292,7 @@ var validateSettings = {
         state: 2,
         container: "_succeed",
         style: "succeed",
-        run: function(option) {
+        run: function (option) {
             option.element.attr("sta", 2);
             option.errorEle.empty();
             if (!validateRules.checkType(option.element)) {
@@ -305,49 +309,49 @@ var validateSettings = {
 
 // 验证规则
 var validateRules = {
-    isNull: function(str) {
+    isNull: function (str) {
         return (str == "" || typeof str != "string");
     },
-    betweenLength: function(str, _min, _max) {
+    betweenLength: function (str, _min, _max) {
         return (str.length >= _min && str.length <= _max);
     },
-    isUid: function(str) {
+    isUid: function (str) {
         return new RegExp(validateRegExp.username).test(str);
     },
-    fullNumberName: function(str) {
+    fullNumberName: function (str) {
         return new RegExp(validateRegExp.fullNumber).test(str);
     },
-    isPwd: function(str) {
+    isPwd: function (str) {
         return /^.*([\W_a-zA-z0-9-])+.*$/i.test(str);
     },
-    isPwdRepeat: function(str1, str2) {
+    isPwdRepeat: function (str1, str2) {
         return (str1 == str2);
     },
-    isEmail: function(str) {
+    isEmail: function (str) {
         return new RegExp(validateRegExp.email).test(str);
     },
-    isTel: function(str) {
+    isTel: function (str) {
         return new RegExp(validateRegExp.tel).test(str);
     },
-    isMobile: function(str) {
+    isMobile: function (str) {
         return new RegExp(validateRegExp.mobile).test(str);
     },
-    checkType: function(element) {
+    checkType: function (element) {
         return (element.attr("type") == "checkbox" || element.attr("type") == "radio" || element.attr("rel") == "select");
     },
-    isRealName: function(str) {
+    isRealName: function (str) {
         return new RegExp(validateRegExp.realname).test(str);
     },
-    isCompanyname: function(str) {
+    isCompanyname: function (str) {
         return new RegExp(validateRegExp.companyname).test(str);
     },
-    isCompanyaddr: function(str) {
+    isCompanyaddr: function (str) {
         return new RegExp(validateRegExp.companyaddr).test(str);
     },
-    isCompanysite: function(str) {
+    isCompanysite: function (str) {
         return new RegExp(validateRegExp.companysite).test(str);
     },
-    simplePwd: function(str) {
+    simplePwd: function (str) {
         // var pin = $("#regName").val();
         // if (pin.length > 0) {
         // pin = strTrim(pin);
@@ -357,7 +361,7 @@ var validateRules = {
         // }
         return pwdLevel(str) == 1;
     },
-    weakPwd: function(str) {
+    weakPwd: function (str) {
         for (var i = 0; i < weakPwdArray.length; i++) {
             if (weakPwdArray[i] == str) {
                 return true;
@@ -378,7 +382,7 @@ var validatePrompt = {
             badFormat: "用户名只能由中文、英文、数字及\"-\"、\"_\"组成",
             fullNumberName: "用户名不能是纯数字，请重新输入"
         },
-        onFocusExpand: function() {
+        onFocusExpand: function () {
             $("#morePinDiv").removeClass().addClass("intelligent-error hide");
         }
     },
@@ -393,7 +397,7 @@ var validatePrompt = {
             simplePwd: "<span>该密码比较简单，有被盗风险，建议您更改为复杂密码，如字母+数字的组合</span>",
             weakPwd: "<span>该密码比较简单，有被盗风险，建议您更改为复杂密码</span>"
         },
-        onFocusExpand: function() {
+        onFocusExpand: function () {
             $("#pwdstrength").hide();
         }
     },
@@ -431,7 +435,7 @@ var nameold, morePinOld, emailResult;
 var namestate = false;
 // 回调函数
 var validateFunction = {
-    regName: function(option) {
+    regName: function (option) {
         $("#intelligent-regName").empty().hide();
         var regName = option.value;
         if (validateRules.isNull(regName) || regName == '') {
@@ -443,7 +447,7 @@ var validateFunction = {
         checkPin(option);
     },
 
-    pwd: function(option) {
+    pwd: function (option) {
         var str1 = option.value;
         var regName = $("#regName").val();
         if ((validateRules.isNull(regName) == false) && (regName != '') && regName == str1) {
@@ -480,7 +484,7 @@ var validateFunction = {
         //			$("#pwdRepeat").focus();
         //		}
     },
-    pwdRepeat: function(option) {
+    pwdRepeat: function (option) {
         var str1 = option.value;
         var str2 = $("#pwd").val();
         var length = validateRules.betweenLength(option.value, 6, 20);
@@ -509,7 +513,7 @@ var validateFunction = {
     // validateSettings.succeed.run(option);
     // }
     // },
-    protocol: function(option) {
+    protocol: function (option) {
         if (option.element.attr("checked") == true) {
             option.element.attr("sta", validateSettings.succeed.state);
             option.errorEle.html("");
@@ -518,7 +522,7 @@ var validateFunction = {
             option.succeedEle.removeClass(validateSettings.succeed.style);
         }
     },
-    pwdstrength: function() {
+    pwdstrength: function () {
         var element = $("#pwdstrength");
         var value = $("#pwd").val();
         if (value.length >= 6 && validateRules.isPwd(value)) {
@@ -527,23 +531,23 @@ var validateFunction = {
             element.show();
             var level = pwdLevel(value);
             switch (level) {
-            case 1:
-                element.removeClass().addClass("strengthA");
-                break;
-            case 2:
-                element.removeClass().addClass("strengthB");
-                break;
-            case 3:
-                element.removeClass().addClass("strengthC");
-                break;
-            default:
-                break;
+                case 1:
+                    element.removeClass().addClass("strengthA");
+                    break;
+                case 2:
+                    element.removeClass().addClass("strengthB");
+                    break;
+                case 3:
+                    element.removeClass().addClass("strengthC");
+                    break;
+                default:
+                    break;
             }
         } else {
             element.hide();
         }
     },
-    checkGroup: function(elements) {
+    checkGroup: function (elements) {
         for (var i = 0; i < elements.length; i++) {
             if (elements[i].checked) {
                 return true;
@@ -551,7 +555,7 @@ var validateFunction = {
         }
         return false;
     },
-    checkSelectGroup: function(elements) {
+    checkSelectGroup: function (elements) {
         for (var i = 0; i < elements.length; i++) {
             if (elements[i].value == -1) {
                 return false;
@@ -560,7 +564,7 @@ var validateFunction = {
         return true;
     },
 
-    FORM_submit: function(elements) {
+    FORM_submit: function (elements) {
         var bool = true;
         for (var i = 0; i < elements.length; i++) {
             if ($(elements[i]).attr("sta") == 2) {
@@ -577,6 +581,7 @@ var validateFunction = {
 
 // 检查用户名
 var checkpin = -10;
+
 function checkPin(option) {
     var pin = option.value;
     if (!validateRules.betweenLength(pin.replace(/[^\x00-\xff]/g, "**"), 6, 20)) {
@@ -597,14 +602,15 @@ function checkPin(option) {
             nameold = pin;
             option.errorEle.html("<em style='color:#999'>检验中……</em>");
             $.ajax({
-            	url : "http://sso.taotao.com/user/check/"+escape(pin)+"/1?r=" + Math.random(),
-            	dataType : "jsonp",
-            	success : function(data) {
-                    checkpin = data.data?"1":"0";
-                    if (!data.data) {
+                url: "http://localhost:8083/server/user/check/" + escape(pin) + "/1?r=" + Math.random(),
+                dataType: "jsonp",
+                success: function (data) {
+                    checkpin = data.data ? "1" : "0";
+                    console.info(data);
+                    if (!data) {
                         validateSettings.succeed.run(option);
                         namestate = true;
-                    }else {
+                    } else {
                         validateSettings.error.run(option, "该用户名已占用！");
                         namestate = false;
                     }
@@ -632,6 +638,7 @@ function selectMe(option) {
     $("#regName").val(option.value);
     $("#regName").blur();
 }
+
 // 主流程发送手机验证码
 function sendMobileCode() {
     if ($("#sendMobileCode").attr("disabled")) {
@@ -652,16 +659,16 @@ function sendMobileCode() {
     $('#mobileCode').removeClass("highlight2");
     // 检测手机号码是否存在
     $.ajax({
-    	url : "http://sso.taotao.com/user/check/"+mobile+"/2?r=" + Math.random(),
-    	dataType : "jsonp",
-    	success : function(result) {
+        url: "http://localhost:8083/server/user/check/" + mobile + "/2?r=" + Math.random(),
+        dataType: "jsonp",
+        success: function (result) {
             if (!result.data) {
                 $('#phone').removeClass().addClass("text");
                 $("#phone_error").html("");
                 $("#phone_error").hide();
                 $("#phone_succeed").removeClass().addClass("blank succeed");
                 mobileFlags = true;
-               // sendmCode();
+                // sendmCode();
             }
 
             if (result.data) {
@@ -691,6 +698,7 @@ function sendMobileCode() {
     });
 
 }
+
 // 手机注册发送验证码target
 function sendmCode() {
     if ($("#sendMobileCode").attr("disabled") || delayFlag == false) {
@@ -705,7 +713,7 @@ function sendmCode() {
     jQuery.ajax({
         type: "get",
         url: "../notifyuser/mobileCode?state=" + state + "&mobile=" + $("#phone").val() + "&r=" + Math.random(),
-        success: function(result) {
+        success: function (result) {
             if (result) {
                 var obj = eval(result);
                 if (obj.rs == 1 || obj.remain) {
@@ -746,6 +754,7 @@ function sendmCode() {
         }
     });
 }
+
 // 邮箱验证发送验证码target
 function sendmCode1() {
     if ($("#sendMobileCode1").attr("disabled") || delayFlag1 == false) {
@@ -758,7 +767,7 @@ function sendmCode1() {
     jQuery.ajax({
         type: "get",
         url: "../notifyuser/mobileCode?state=" + state + "&mobile=" + $("#phone1").val() + "&r=" + Math.random(),
-        success: function(result) {
+        success: function (result) {
             if (result) {
                 var obj = eval(result);
                 if (obj.rs == 1 || obj.remain) {
@@ -803,6 +812,7 @@ function sendmCode1() {
         }
     });
 }
+
 // 次流程发送手机验证码
 function sendMobileCode1() {
     if ($("#sendMobileCode1").attr("disabled")) {
@@ -843,12 +853,12 @@ function sendMobileCode1() {
     $("#mobileCode1_error").removeClass().empty();
     $("#mobileCode1_error").hide();
     $('#mobileCode1').removeClass("highlight2");
-    
+
     // 检测手机号码是否存在
     $.ajax({
-    	url : "http://sso.taotao.com/user/check/"+mobile+"/2?r=" + Math.random(),
-    	dataType : "jsonp",
-    	success : function(result) {
+        url: "http://sso.taotao.com/user/check/" + mobile + "/2?r=" + Math.random(),
+        dataType: "jsonp",
+        success: function (result) {
             if (!result.data) {
                 $('#phone1').removeClass().addClass("text");
                 $("#phone1_error").html("");
@@ -887,6 +897,7 @@ function sendMobileCode1() {
 }
 
 var oldEmail, emailCheckResult;
+
 // 邮箱验证信息填写
 function sendRegMail() {
     var mail = $("#mail").val();
@@ -927,35 +938,35 @@ function sendRegMail() {
             // }
             // oldEmail = email;
             $.getJSON("../validateuser/isEmailEngaged?email=" + escape(email) + "&r=" + Math.random(),
-            function(result) {
-                emailResult = result.success;
-                emailCheckResult = emailResult;
-                // 邮箱未被验证 可注册
-                if (emailResult == 0) {
-                    $("#emailMg").val(email);
-                    $("#authcodeMg").val(authcode1);
-                    jdThickBoxclose();
-                    $("#dyMobileButton1").html("获取短信验证码");
-                    jQuery.jdThickBox({
-                        type: "text",
-                        width: 500,
-                        height: 260,
-                        source: $('#box01').html(),
-                        title: "验证手机",
-                        _close_val: "×",
-                        _con: "opinioncon",
-                        _titleOn: true
-                    });
-                }
-                if (emailResult == 1) {
-                    emailEngagedStyle();
-                    return;
-                }
-                if (emailResult == 2) {
-                    emailFormatErrorStyle();
-                    return;
-                }
-            });
+                function (result) {
+                    emailResult = result.success;
+                    emailCheckResult = emailResult;
+                    // 邮箱未被验证 可注册
+                    if (emailResult == 0) {
+                        $("#emailMg").val(email);
+                        $("#authcodeMg").val(authcode1);
+                        jdThickBoxclose();
+                        $("#dyMobileButton1").html("获取短信验证码");
+                        jQuery.jdThickBox({
+                            type: "text",
+                            width: 500,
+                            height: 260,
+                            source: $('#box01').html(),
+                            title: "验证手机",
+                            _close_val: "×",
+                            _con: "opinioncon",
+                            _titleOn: true
+                        });
+                    }
+                    if (emailResult == 1) {
+                        emailEngagedStyle();
+                        return;
+                    }
+                    if (emailResult == 2) {
+                        emailFormatErrorStyle();
+                        return;
+                    }
+                });
 
         }
     }
@@ -1037,7 +1048,7 @@ function mobileReg() {
             url: "../register/sendRegEmail?r=" + Math.random() + "&" + location.search.substring(1),
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
             data: params,
-            success: function(result) {
+            success: function (result) {
                 var obj = eval(result);
                 var emailResult = obj.success;
                 var key = obj.k;
@@ -1070,19 +1081,23 @@ function mobileReg() {
         });
     }
 }
+
 function mobileCodeError(content) {
     $("#mobileCode_error").html(content);
     $("#mobileCode_error").removeClass().addClass("error");
     $("#mobileCode_error").show();
     $("#sendMobileCode").removeClass().addClass("btn").removeAttr("disabled");
 }
+
 function mobileCodeHide() {
     $("#mobileCode_error").html("");
     $("#mobileCode_error").removeClass().addClass("error");
     $("#mobileCode_error").hide();
 }
+
 var delayTime = 120;
 var delayFlag = true;
+
 function countDown() {
     delayTime--;
     $("#sendMobileCode").attr("disabled", "disabled");
@@ -1099,8 +1114,10 @@ function countDown() {
         setTimeout(countDown, 1000);
     }
 }
+
 var delayTime1 = 120;
 var delayFlag1 = true;
+
 function countDown1() {
     delayTime1--;
     $("#sendMobileCode1").attr("disabled", "disabled");
@@ -1118,28 +1135,30 @@ function countDown1() {
         countDown1.timer = setTimeout(countDown1, 1000);
     }
 }
+
 countDown1.timer = '';
+
 function strTrim(str) {
     return str.replace(/(^\s*)|(\s*$)/g, "");
 }
 
-$("#regName").blur(function() {
-    setTimeout(function() {
-        if ($("#schoolid").val() == "") {
-            $("#schoolinput").val("");
-            $("#hnschool").val("-1");
-            $("#hnschool").attr("sta", 0);
-            $("#schoolinput_succeed").removeClass("succeed");
-        } else {
-            $("#hnschool").val("1");
-            $("#hnschool").attr("sta", 2);
-            $("#schoolinput_error").html("");
-            $("#schoolinput_succeed").addClass("succeed");
-        }
-        $('#intelligent-school').hide().empty();
-        $("#hnseli").val("-1");
-    },
-    200)
+$("#regName").blur(function () {
+    setTimeout(function () {
+            if ($("#schoolid").val() == "") {
+                $("#schoolinput").val("");
+                $("#hnschool").val("-1");
+                $("#hnschool").attr("sta", 0);
+                $("#schoolinput_succeed").removeClass("succeed");
+            } else {
+                $("#hnschool").val("1");
+                $("#hnschool").attr("sta", 2);
+                $("#schoolinput_error").html("");
+                $("#schoolinput_succeed").addClass("succeed");
+            }
+            $('#intelligent-school').hide().empty();
+            $("#hnseli").val("-1");
+        },
+        200)
 })
 
 function showHideProtocol() {
@@ -1166,24 +1185,27 @@ function validateRegName() {
     }
     return true;
 }
-$("#regist .tab li").hover(function() {
-    if ($(this).hasClass("curr")) {} else {
-        $(this).addClass("new");
-    }
-},
-function() {
-    if ($(this).hasClass("curr")) {} else {
-        $(this).removeClass("new");
-    }
-})
 
-$("#registsubmit").hover(function() {
-    $(this).addClass("hover-btn")
-},
-function() {
+$("#regist .tab li").hover(function () {
+        if ($(this).hasClass("curr")) {
+        } else {
+            $(this).addClass("new");
+        }
+    },
+    function () {
+        if ($(this).hasClass("curr")) {
+        } else {
+            $(this).removeClass("new");
+        }
+    })
 
-    $(this).removeClass("hover-btn")
-})
+$("#registsubmit").hover(function () {
+        $(this).addClass("hover-btn")
+    },
+    function () {
+
+        $(this).removeClass("hover-btn")
+    })
 
 // 主流程手机获得焦点事件
 function phoneFocus() {
@@ -1197,6 +1219,7 @@ function phoneFocus() {
     $("#phone_error").show();
     $('#phone_succeed').removeClass('error-ico');
 }
+
 //主流程手机获得焦点事件
 function phoneOtherFocus() {
     var mobile = $("#phone").val();
@@ -1209,6 +1232,7 @@ function phoneOtherFocus() {
     $("#phone_error").show();
     $('#phone_succeed').removeClass('error-ico');
 }
+
 // 次流程手机获得焦点事件
 function phone1Focus() {
     var mobile1 = $("#phone1").val();
@@ -1223,6 +1247,7 @@ function phone1Focus() {
 }
 
 var oldMobile, mobileResult;
+
 // 主流程检查手机
 function phoneBlur() {
     var mobile = $("#phone").val();
@@ -1261,9 +1286,9 @@ function phoneBlur() {
     $("#state").val("");
     // 检测手机号码是否存在
     $.ajax({
-    	url : "http://sso.taotao.com/user/check/"+mobile+"/2?r=" + Math.random(),
-    	dataType : "jsonp",
-    	success : function(result) {
+        url: "http://sso.taotao.com/user/check/" + mobile + "/2?r=" + Math.random(),
+        dataType: "jsonp",
+        success: function (result) {
             mobileResult = result.data ? "1" : "0";
             // if (mobileResult != 2) {
             // if ($("#sendMobileCode").attr("disabled")) {
@@ -1287,13 +1312,13 @@ function phoneBlur() {
         }
     });
 }
+
 //主流程检查手机
 function phoneKeyup() {
     var mobile = $("#phone").val();
-    var mobileLength=mobile.length;
-    if(mobileLength != 11)
-    {
-    	return;
+    var mobileLength = mobile.length;
+    if (mobileLength != 11) {
+        return;
     }
     if (mobile == "") {
         $('#phone').removeClass().addClass('text');
@@ -1329,9 +1354,9 @@ function phoneKeyup() {
     $("#state").val("");
     // 检测手机号码是否存在
     $.ajax({
-    	url : "http://sso.taotao.com/user/check/"+mobile+"/2?r=" + Math.random(),
-    	dataType : "jsonp",
-    	success : function(result) {
+        url: "http://sso.taotao.com/user/check/" + mobile + "/2?r=" + Math.random(),
+        dataType: "jsonp",
+        success: function (result) {
             mobileResult = result.data ? "1" : "0";
             $("#sendMobileCode").removeAttr("disabled");
             if (!result.data) {
@@ -1380,38 +1405,38 @@ function phoneOtherBlur() {
     }
     // 检测手机号码是否存在
     $.getJSON("../validateuser/isMobileEngaged?mobile=" + mobile + "&r=" + Math.random(),
-    function(result) {
+        function (result) {
 
-        mobileResult = result.success;
-        // if (mobileResult != 2) {
-        // if ($("#sendMobileCode").attr("disabled")) {
-        // return;
-        // }
-        // $("#sendMobileCode").removeAttr("disabled");
-        // }
-        $("#sendMobileCode").removeAttr("disabled");
-        if (result.success == 0) {
-            mobileOkStyle();
-        }
+            mobileResult = result.success;
+            // if (mobileResult != 2) {
+            // if ($("#sendMobileCode").attr("disabled")) {
+            // return;
+            // }
+            // $("#sendMobileCode").removeAttr("disabled");
+            // }
+            $("#sendMobileCode").removeAttr("disabled");
+            if (result.success == 0) {
+                mobileOkStyle();
+            }
 
-        if (result.success == 1 || result.success == 2) {
-        	 $('#phone').removeClass().addClass('text highlight2');
-             $("#phone_error").html("该手机号已被绑定，请更换手机号");
-             $("#phone_error").removeClass().addClass("error");
-             $("#phone_error").show();
-             $("#phone_succeed").removeClass().addClass("");
-        	 mobileFlags = false;
-        }
+            if (result.success == 1 || result.success == 2) {
+                $('#phone').removeClass().addClass('text highlight2');
+                $("#phone_error").html("该手机号已被绑定，请更换手机号");
+                $("#phone_error").removeClass().addClass("error");
+                $("#phone_error").show();
+                $("#phone_succeed").removeClass().addClass("");
+                mobileFlags = false;
+            }
 
-    });
+        });
 }
+
 //主流程检查手机
 function phoneOtherKeyup() {
     var mobile = $("#phone").val();
-    var mobileLength=mobile.length;
-    if(mobileLength != 11)
-    {
-    	return;
+    var mobileLength = mobile.length;
+    if (mobileLength != 11) {
+        return;
     }
     if (mobile == "") {
         $('#phone').removeClass().addClass('text');
@@ -1439,30 +1464,31 @@ function phoneOtherKeyup() {
     }
     // 检测手机号码是否存在
     $.getJSON("../validateuser/isMobileEngaged?mobile=" + mobile + "&r=" + Math.random(),
-    function(result) {
+        function (result) {
 
-        mobileResult = result.success;
-        // if (mobileResult != 2) {
-        // if ($("#sendMobileCode").attr("disabled")) {
-        // return;
-        // }
-        // $("#sendMobileCode").removeAttr("disabled");
-        // }
-        $("#sendMobileCode").removeAttr("disabled");
-        if (result.success == 0) {
-            mobileOkStyle();
-        }
+            mobileResult = result.success;
+            // if (mobileResult != 2) {
+            // if ($("#sendMobileCode").attr("disabled")) {
+            // return;
+            // }
+            // $("#sendMobileCode").removeAttr("disabled");
+            // }
+            $("#sendMobileCode").removeAttr("disabled");
+            if (result.success == 0) {
+                mobileOkStyle();
+            }
 
-        if (result.success == 1 || result.success == 2) {
-         	 $('#phone').removeClass().addClass('text highlight2');
-             $("#phone_error").html("该手机号已被绑定，请更换手机号");
-             $("#phone_error").removeClass().addClass("error");
-             $("#phone_error").show();
-             $("#phone_succeed").removeClass().addClass("");
-       	    mobileFlags = false;
-       }
-    });
+            if (result.success == 1 || result.success == 2) {
+                $('#phone').removeClass().addClass('text highlight2');
+                $("#phone_error").html("该手机号已被绑定，请更换手机号");
+                $("#phone_error").removeClass().addClass("error");
+                $("#phone_error").show();
+                $("#phone_succeed").removeClass().addClass("");
+                mobileFlags = false;
+            }
+        });
 }
+
 function showMobileCheckResult(result) {
     if (result == 0) {
         mobileOkStyle();
@@ -1509,6 +1535,7 @@ function mobileEngagedStyle() {
 //    $("#mobileCodeDiv").hide();
     mobileFlags = false;
 }
+
 function showMobileCheckResult1(result) {
     if (result == 0) {
         mobileOkStyle1();
@@ -1520,6 +1547,7 @@ function showMobileCheckResult1(result) {
         mobileBindedStyle1();
     }
 }
+
 function mobileOkStyle1() {
     $('#phone1').removeClass().addClass("text");
     $("#phone1_error").removeClass().addClass("success");
@@ -1558,9 +1586,11 @@ function mobileEngagedStyle1() {
     mobileFlag = false;
     return;
 }
+
 // 次流程手机失去焦点事件
 var mobileFlag = false;
 var oldMobile1, mobileResult1;
+
 function phone1Blur() {
     var mobile = $("#phone1").val();
     if (mobile == "") {
@@ -1600,35 +1630,35 @@ function phone1Blur() {
     $('#mobileCode1').removeClass("highlight2");
     // 检测手机号码是否存在
     $.getJSON("../validateuser/isMobileEngaged?mobile=" + mobile + "&r=" + Math.random(),
-    function(result) {
-        // mobileResult1 = result.success;
-        // if (mobileResult1 != 2) {
-        // if ($("#sendMobileCode1").attr("disabled")) {
-        // return;
-        // }
-        // $("#sendMobileCode1").removeAttr("disabled");
-        // }
-        $("#sendMobileCode1").removeAttr("disabled");
-        if (result.success == 0) {
-            mobileOkStyle1();
-        }
+        function (result) {
+            // mobileResult1 = result.success;
+            // if (mobileResult1 != 2) {
+            // if ($("#sendMobileCode1").attr("disabled")) {
+            // return;
+            // }
+            // $("#sendMobileCode1").removeAttr("disabled");
+            // }
+            $("#sendMobileCode1").removeAttr("disabled");
+            if (result.success == 0) {
+                mobileOkStyle1();
+            }
 
-        if (result.success == 1) {
-            mobileEngagedStyle1();
-        }
+            if (result.success == 1) {
+                mobileEngagedStyle1();
+            }
 
-        if (result.success == 2) {
-            mobileBindedStyle1();
-            // $("#sendMobileCode1").attr("disabled", "disabled");
-        }
-    });
+            if (result.success == 2) {
+                mobileBindedStyle1();
+                // $("#sendMobileCode1").attr("disabled", "disabled");
+            }
+        });
 }
+
 function phone1Keyup() {
     var mobile = $("#phone1").val();
-    var mobileLength=mobile.length;
-    if(mobileLength != 11)
-    {
-    	return;
+    var mobileLength = mobile.length;
+    if (mobileLength != 11) {
+        return;
     }
     if (mobile == "") {
         $('#phone1').removeClass().addClass("text");
@@ -1667,50 +1697,55 @@ function phone1Keyup() {
     $('#mobileCode1').removeClass("highlight2");
     // 检测手机号码是否存在
     $.getJSON("../validateuser/isMobileEngaged?mobile=" + mobile + "&r=" + Math.random(),
-    function(result) {
-        // mobileResult1 = result.success;
-        // if (mobileResult1 != 2) {
-        // if ($("#sendMobileCode1").attr("disabled")) {
-        // return;
-        // }
-        // $("#sendMobileCode1").removeAttr("disabled");
-        // }
-        $("#sendMobileCode1").removeAttr("disabled");
-        if (result.success == 0) {
-            mobileOkStyle1();
-        }
+        function (result) {
+            // mobileResult1 = result.success;
+            // if (mobileResult1 != 2) {
+            // if ($("#sendMobileCode1").attr("disabled")) {
+            // return;
+            // }
+            // $("#sendMobileCode1").removeAttr("disabled");
+            // }
+            $("#sendMobileCode1").removeAttr("disabled");
+            if (result.success == 0) {
+                mobileOkStyle1();
+            }
 
-        if (result.success == 1) {
-            mobileEngagedStyle1();
-        }
+            if (result.success == 1) {
+                mobileEngagedStyle1();
+            }
 
-        if (result.success == 2) {
-            mobileBindedStyle1();
-            // $("#sendMobileCode1").attr("disabled", "disabled");
-        }
-    });
+            if (result.success == 2) {
+                mobileBindedStyle1();
+                // $("#sendMobileCode1").attr("disabled", "disabled");
+            }
+        });
 }
+
 // 次流程短信验证码获得焦点事件
 function mobileCodeFocus() {
     $('#mobileCode').removeClass().addClass('text text-1 highlight1');
     $("#mobileCode_error").hide();
 }
+
 // 次流程短信验证码获得失去事件
 function mobileCodeBlur() {
     $('#mobileCode').removeClass().addClass("text text-1");
     $("#mobileCode_error").hide();
 }
+
 // 次流程短信验证码获得焦点事件
 function mobileCode1Focus() {
     $('#mobileCode1').removeClass().addClass('text text-1 highlight1');
     $("#mobileCode1_error").hide();
 }
+
 // 次流程短信验证码获得失去事件
 function mobileCode1Blur() {
     $('#mobileCode1').removeClass().addClass("text text-1");
     $("#mobileCode1_error").hide();
     $('#mobileCode1_succeed').removeClass('error-ico');
 }
+
 // 解绑按钮事件
 function unbind() {
     $("#state").val("unbind");
@@ -1719,6 +1754,7 @@ function unbind() {
     // sendmCode();
     sendMobileCode();
 }
+
 // 次流程解绑按钮事件
 function unbind1() {
     $("#state").val("unbind");
@@ -1726,9 +1762,10 @@ function unbind1() {
     $("#rebind1").remove();
     sendMobileCode1();
 }
+
 // 用户协议
-$(function() {
-    $('#protocol').click(function() {
+$(function () {
+    $('#protocol').click(function () {
         jQuery.jdThickBox({
             type: "text",
             title: "京东用户注册协议",

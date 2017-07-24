@@ -1,4 +1,8 @@
 package com.taotao.sso.mapper;
 
-public class UserMapper {
+import com.github.abel533.mapper.Mapper;
+import com.taotao.sso.pojo.User;
+
+public interface UserMapper extends Mapper<User> {
+
 }

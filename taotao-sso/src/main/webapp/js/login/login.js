@@ -1,6 +1,7 @@
 function verc() {
     $("#JD_Verification1").click();
 }
+
 var validateRegExp = {
     intege: "^-?[1-9]\\d*$", //整数
     intege1: "^[1-9]\\d*$", //正整数
@@ -285,9 +286,11 @@ var validateFunction = {
         return bool;
     }
 };
+
 function strTrim(str) {
     return str.replace(/(^\s*)|(\s*$)/g, "");
 }
+
 //jdvalidate.newentry2013.js
 $.extend(validatePrompt, {
     username: {
@@ -306,21 +309,21 @@ $.extend(validateFunction, {
     },
 
     FORM_validate: function () {
-        if($("#chkOpenCtrl").attr("checked")==true){
+        if ($("#chkOpenCtrl").attr("checked") == true) {
             var srcValue = $("#JD_Verification1").attr("src");
             if (!srcValue) {
                 srcValue = $("#JD_Verification1").attr("src2");
             }
             var uuid = srcValue.split("&uid=")[1].split("&")[0];
             $.ajax({
-                url: "../uc/srand?r="+Math.random() + "&uuid=" + uuid,
+                url: "../uc/srand?r=" + Math.random() + "&uuid=" + uuid,
                 type: "GET",
                 async: false,
-                success: function(result){
-                    if(result){
+                success: function (result) {
+                    if (result) {
                         var obj = eval(result);
                         if (obj.failure) {
-                            $("#loginpwd_error").html("页面异常，请刷新后重新提交").show().attr({ "class": "error" });
+                            $("#loginpwd_error").html("页面异常，请刷新后重新提交").show().attr({"class": "error"});
                             return false;
                         }
                         pgeditor.pwdSetSk(obj.info);
@@ -328,11 +331,12 @@ $.extend(validateFunction, {
                 }
             });
             $("#loginpwd").val(pgeditor.pwdResult());
-            try{
+            try {
                 $("#machineNet").val(pgeditor.machineNetwork());
                 $("#machineCpu").val(pgeditor.machineCPU());
                 $("#machineDisk").val(pgeditor.machineDisk());
-            }catch(e){}
+            } catch (e) {
+            }
         } else {
             $("#loginpwd").val($("#nloginpwd").val());
         }
@@ -351,9 +355,11 @@ $("#loginname").jdValidate(validatePrompt.username, validateFunction.username);
 $("#loginpwd").jdValidate(validatePrompt.empty, validateFunction.pwd);
 $("#nloginpwd").jdValidate(validatePrompt.empty, validateFunction.pwd);
 $("#authcode").jdValidate(validatePrompt.empty, validateFunction.authcode);
+
 function verc() {
     $("#JD_Verification1").click();
 }
+
 $("#loginname,#nloginpwd, #authcode").bind('keyup', function (event) {
     if (event.keyCode == 13) {
         $("#loginsubmit").click();
@@ -364,18 +370,18 @@ $("#loginsubmit").click(function () {
     var flag = validateFunction.FORM_validate();
     if (flag) {
         var uuid = $("#uuid").val();
-        $(this).attr({ "disabled": "disabled" });
+        $(this).attr({"disabled": "disabled"});
         var _username = $("#formlogin [name=username]").val();
         var _password = $("#formlogin [name=password]").val();
         $.ajax({
             type: "POST",
-            url: "/service/user/doLogin?r=" + Math.random(),
+            url: "/server/user/doLogin?r=" + Math.random(),
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
-            data: {username:_username,password:_password},
-            dataType : "json",
+            data: {username: _username, password: _password},
+            dataType: "json",
             error: function () {
-                $("#nloginpwd").attr({ "class": "text highlight2" });
-                $("#loginpwd_error").html("网络超时，请稍后再试").show().attr({ "class": "error" });
+                $("#nloginpwd").attr({"class": "text highlight2"});
+                $("#loginpwd_error").html("网络超时，请稍后再试").show().attr({"class": "error"});
                 $("#loginsubmit").removeAttr("disabled");
                 $this.removeAttr("disabled");
             },
@@ -383,7 +389,7 @@ $("#loginsubmit").click(function () {
                 if (result) {
                     var obj = eval(result);
                     if (obj.status == 200) {
-                    	obj.success = "http://www.taotao.com/";
+                        obj.success = "http://localhost:8082/";
                         var isIE = !-[1,];
                         if (isIE) {
                             var link = document.createElement("a");
@@ -395,12 +401,12 @@ $("#loginsubmit").click(function () {
                             window.location = obj.success;
                         }
                         return;
-                    }else{
-                    $("#loginsubmit").removeAttr("disabled");
-                    verc();
-                      $("#nloginpwd").attr({ "class": "text highlight2" });
-                      $("#loginpwd_error").html("账号或密码错误!").show().attr({ "class": "error" });
-                    	
+                    } else {
+                        $("#loginsubmit").removeAttr("disabled");
+                        verc();
+                        $("#nloginpwd").attr({"class": "text highlight2"});
+                        $("#loginpwd_error").html("账号或密码错误!").show().attr({"class": "error"});
+
                     }
 //                    if (obj.transfer) {
 //                        window.location = obj.transfer + window.location.search;
@@ -448,8 +454,8 @@ $("#loginsubmit").click(function () {
 function loginNameOk() {
     var loginName = $("#loginname").val();
     if (validateRules.isNull(loginName) || loginName == '用户名/邮箱/已验证手机') {
-        $("#loginname").attr({ "class": "text highlight2" });
-        $("#loginname_error").html("请输入用户名/邮箱/已验证手机").show().attr({ "class": "error" });
+        $("#loginname").attr({"class": "text highlight2"});
+        $("#loginname_error").html("请输入用户名/邮箱/已验证手机").show().attr({"class": "error"});
         return false;
     }
     return true;
@@ -463,15 +469,15 @@ $("#loginsubmitframe").click(function () {
             srcValue = $("#JD_Verification1").attr("src2");
         }
         var uuid = srcValue.split("&uid=")[1].split("&")[0];
-        $(this).attr({ "disabled": "disabled" });
+        $(this).attr({"disabled": "disabled"});
         $.ajax({
             type: "POST",
             url: "../uc/loginService?nr=1&uuid=" + uuid + "&" + location.search.substring(1) + "&r=" + Math.random(),
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
             data: $("#formloginframe").serialize(),
             error: function () {
-                $("#nloginpwd").attr({ "class": "text highlight2" });
-                $("#loginpwd_error").html("网络超时，请稍后再试").show().attr({ "class": "error" });
+                $("#nloginpwd").attr({"class": "text highlight2"});
+                $("#loginpwd_error").html("网络超时，请稍后再试").show().attr({"class": "error"});
                 $("#loginsubmitframe").removeAttr("disabled");
             },
             success: function (result) {
@@ -500,9 +506,9 @@ $("#loginsubmitframe").click(function () {
                             return;
                         }
                     }
-                    if(obj.venture){                    	
-                    	window.parent.location = "http://safe.jd.com/dangerousVerify/index.action?username=" + obj.venture + "&ReturnUrl="+encodeURI(window.parent.location) + "&t=" + new Date().getTime();
-                    	return;
+                    if (obj.venture) {
+                        window.parent.location = "http://safe.jd.com/dangerousVerify/index.action?username=" + obj.venture + "&ReturnUrl=" + encodeURI(window.parent.location) + "&t=" + new Date().getTime();
+                        return;
                     }
                     if (obj.resetpwd) {
                         window.parent.location = "http://safe.jd.com/resetPwd/reset.action?username=" + obj.resetpwd;
@@ -515,20 +521,20 @@ $("#loginsubmitframe").click(function () {
                         $("#o-authcode").show();
                     }
                     if (obj.authcode2) {
-                        $("#loginname").attr({ "class": "text highlight2" });
-                        $("#loginname_error").html("您的账号有安全隐患，建议您登录后修改为复杂密码").show().attr({ "class": "message" });
+                        $("#loginname").attr({"class": "text highlight2"});
+                        $("#loginname_error").html("您的账号有安全隐患，建议您登录后修改为复杂密码").show().attr({"class": "message"});
                     }
                     if (obj.username) {
-                        $("#loginname").attr({ "class": "text highlight2" });
-                        $("#loginname_error").html(obj.username).show().attr({ "class": "error" });
+                        $("#loginname").attr({"class": "text highlight2"});
+                        $("#loginname_error").html(obj.username).show().attr({"class": "error"});
                     }
                     if (obj.pwd) {
-                        $("#nloginpwd").attr({ "class": "text highlight2" });
-                        $("#loginpwd_error").html(obj.pwd).show().attr({ "class": "error" });
+                        $("#nloginpwd").attr({"class": "text highlight2"});
+                        $("#loginpwd_error").html(obj.pwd).show().attr({"class": "error"});
                     }
                     if (obj.emptyAuthcode) {
-                        $("#authcode").attr({ "class": "text text-1 highlight2" });
-                        $("#authcode_error").html(obj.emptyAuthcode).show().attr({ "class": "error" });
+                        $("#authcode").attr({"class": "text text-1 highlight2"});
+                        $("#authcode_error").html(obj.emptyAuthcode).show().attr({"class": "error"});
                     }
                 }
             }
@@ -541,6 +547,7 @@ $("#loginname,#nloginpwd, #authcode").bind('keyup', function (event) {
     }
 });
 var authcodeShowed = false;
+
 function preCheck() {
     var pin = $("#loginname").val();
     if (pin != null && pin.length > 0 && pin != '用户名/邮箱/已验证手机') {
@@ -557,39 +564,41 @@ function preCheck() {
                 }
                 if (obj.authcode2) {
                     //$("#loginname").attr({ "class":"text highlight2" });
-                    $("#loginname_error").html("您的账号有安全隐患，建议您登录后修改为复杂密码").show().attr({ "class": "message" });
+                    $("#loginname_error").html("您的账号有安全隐患，建议您登录后修改为复杂密码").show().attr({"class": "message"});
                 }
             }
         })
     }
 }
+
 function showBox() {
-    if(pgeditor.getLinkHtml()=="nonsupport"){
+    if (pgeditor.getLinkHtml() == "nonsupport") {
         jQuery.jdThickBox({
-            type:"text",
-            title:"提示",
-            width:350,
-            height:90,
-            source:"<div class=\"t-error\"><div class=\"mc\"><i></i><strong>抱歉，本控件仅支持window系统。</strong><span>用户点击“确定”可以关闭弹层。</span><div class=\"clr\"></div><div class=\"btn\" onclick='jdThickBoxclose();'>确定</div></div>",
-            _autoReposi:true
+            type: "text",
+            title: "提示",
+            width: 350,
+            height: 90,
+            source: "<div class=\"t-error\"><div class=\"mc\"><i></i><strong>抱歉，本控件仅支持window系统。</strong><span>用户点击“确定”可以关闭弹层。</span><div class=\"clr\"></div><div class=\"btn\" onclick='jdThickBoxclose();'>确定</div></div>",
+            _autoReposi: true
         });
         return;
     }
-    var dwl = "<a href=\"http://static.360buyimg.com/securityctl/"+pgeditor.getLinkHtml()+"\">立即下载</a>";
+    var dwl = "<a href=\"http://static.360buyimg.com/securityctl/" + pgeditor.getLinkHtml() + "\">立即下载</a>";
     jQuery.jdThickBox({
-        type:"text",
-        title:"提示",
-        width:350,
-        height:130,
-        source:"<div class=\"step step-0\"><div class=\"mc\"><p>安全控件可提高账户安全性，加密保护您的密码。<a href=\"http://help.jd.com/help/question-61.html\" style=\"color:#005EA7;cursor:pointer\" target=\"_blank\">了解更多&gt;</a></p><ul><li>立即下载</li><li>手动安装</li><li>刷新页面，继续购物</li></ul><div class=\"btn\">"+dwl+"</div></div></div>",
-        _autoReposi:true
+        type: "text",
+        title: "提示",
+        width: 350,
+        height: 130,
+        source: "<div class=\"step step-0\"><div class=\"mc\"><p>安全控件可提高账户安全性，加密保护您的密码。<a href=\"http://help.jd.com/help/question-61.html\" style=\"color:#005EA7;cursor:pointer\" target=\"_blank\">了解更多&gt;</a></p><ul><li>立即下载</li><li>手动安装</li><li>刷新页面，继续购物</li></ul><div class=\"btn\">" + dwl + "</div></div></div>",
+        _autoReposi: true
     });
 }
-function inputSelect(){
-    if(!pgeditor.checkInstall()){
+
+function inputSelect() {
+    if (!pgeditor.checkInstall()) {
         showBox();
     } else {
-        if($("#chkOpenCtrl").attr("checked")){
+        if ($("#chkOpenCtrl").attr("checked")) {
             $("#nloginpwd").hide();
             $("#sloginpwd").show();
             $("#nloginpwd").val("");
@@ -600,12 +609,14 @@ function inputSelect(){
         }
     }
 }
-function updateCtl(){
+
+function updateCtl() {
     $("#sloginpwd").hide();
     $("#nloginpwd").show();
     showBox();
 }
-$("#nloginpwd,#_ocx_password").bind('focus',function(){
+
+$("#nloginpwd,#_ocx_password").bind('focus', function () {
     $("#loginpwd_error").empty();
     $("#loginpwd_error").removeClass().addClass("hide");
 });

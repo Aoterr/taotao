@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
@@ -13,29 +13,31 @@
     <script type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
 </head>
 <body>
-    <script type="text/javascript">
-function login() {
-    location.href = "/user/login.html";
-    return false
-}
-function regist() {
-    location.href = "/user/register.html";
-    return false
-}
-(function (a) {
-    a.fn.Jdropdown = function (d, e) {
-        if (!this.length) {
-            return
-        }
-        if (typeof d == "function") {
-            e = d;
-            d = {}
-        }
-        var c = a.extend({event: "mouseover", current: "hover", delay: 0}, d || {});
-        var b = (c.event == "mouseover") ? "mouseout" : "mouseleave";
-        a.each(this, function () {
-            var h = null, g = null, f = false;
-            a(this).bind(c.event,
+<script type="text/javascript">
+    function login() {
+        location.href = "/user/login.html";
+        return false
+    }
+
+    function regist() {
+        location.href = "/user/register.html";
+        return false
+    }
+
+    (function (a) {
+        a.fn.Jdropdown = function (d, e) {
+            if (!this.length) {
+                return
+            }
+            if (typeof d == "function") {
+                e = d;
+                d = {}
+            }
+            var c = a.extend({event: "mouseover", current: "hover", delay: 0}, d || {});
+            var b = (c.event == "mouseover") ? "mouseout" : "mouseleave";
+            a.each(this, function () {
+                var h = null, g = null, f = false;
+                a(this).bind(c.event,
                     function () {
                         if (f) {
                             clearTimeout(g)
@@ -50,38 +52,39 @@ function regist() {
                             }, c.delay)
                         }
                     }).bind(b, function () {
-                        if (f) {
-                            var j = a(this);
-                            g = setTimeout(function () {
-                                j.removeClass(c.current);
-                                f = false
-                            }, c.delay)
-                        } else {
-                            clearTimeout(h)
-                        }
-                    })
-        })
-    }
-})(jQuery);
-function addToFavorite() {
-    var a = "http://www.jd.com/";
-    var b = "京东商城-网购上京东，省钱又放心";
-    if (document.all) {
-        window.external.AddFavorite(a, b)
-    } else if (window.sidebar) {
-        window.sidebar.addPanel(b, a, "")
-    } else {
-        alert("对不起，您的浏览器不支持此操作!\n请您使用菜单栏或Ctrl+D收藏本站。")
-    }
-}</script>
+                    if (f) {
+                        var j = a(this);
+                        g = setTimeout(function () {
+                            j.removeClass(c.current);
+                            f = false
+                        }, c.delay)
+                    } else {
+                        clearTimeout(h)
+                    }
+                })
+            })
+        }
+    })(jQuery);
+
+    function addToFavorite() {
+        var a = "http://www.jd.com/";
+        var b = "京东商城-网购上京东，省钱又放心";
+        if (document.all) {
+            window.external.AddFavorite(a, b)
+        } else if (window.sidebar) {
+            window.sidebar.addPanel(b, a, "")
+        } else {
+            alert("对不起，您的浏览器不支持此操作!\n请您使用菜单栏或Ctrl+D收藏本站。")
+        }
+    }</script>
 <!--shortcut start-->
-<jsp:include page="../commons/shortcut.jsp" />
+<jsp:include page="../commons/shortcut.jsp"/>
 <!--shortcut end-->
 <div class="w" id="logo">
     <div>
-    	<a href="http://www.taotao.com/">
-    		<img src="/images/taotao-logo.gif" alt="京东商城" width="170" height="60"/>
-    	</a> <b></b>
+        <a href="http://www.taotao.com/">
+            <img src="/images/taotao-logo.gif" alt="京东商城" width="170" height="60"/>
+        </a> <b></b>
     </div>
 </div>
 
@@ -131,10 +134,10 @@ function addToFavorite() {
 
                             <div class="groom" id="morePinGroom"></div>
                         </div>
-                                                <input type="hidden" value="-1" id="hnschool" class="hide"/>
-                                                <input type="hidden" id="schoolid" name="schoolid" class="hide"/>
-                                                    <input type="hidden" name="eBHtwyeixI" value="EyEFt"/>
-                                                <input type="hidden" id="hnseli" class="hide"/>
+                        <input type="hidden" value="-1" id="hnschool" class="hide"/>
+                        <input type="hidden" id="schoolid" name="schoolid" class="hide"/>
+                        <input type="hidden" name="eBHtwyeixI" value="EyEFt"/>
+                        <input type="hidden" id="hnseli" class="hide"/>
 
                     </div>
                 </div>
@@ -161,14 +164,14 @@ function addToFavorite() {
                         $('#pwd')[0].onkeypress = function (event) {
                             var e = event || window.event,
                                 $tip =
-                            $('#capslock'),
-                                    kc = e.keyCode || e.which, // 按键的keyCode
-                                    isShift = e.shiftKey || (kc == 16 ) || false; // shift键是否按住
+                                    $('#capslock'),
+                                kc = e.keyCode || e.which, // 按键的keyCode
+                                isShift = e.shiftKey || (kc == 16 ) || false; // shift键是否按住
                             if (((kc >= 65 && kc <= 90) && !isShift) || ((kc >= 97 && kc <= 122) && isShift)) {
-                                    $tip.show();
+                                $tip.show();
                             }
                             else {
-                                    $tip.hide();
+                                $tip.hide();
                             }
                         };
                     </script>
@@ -184,21 +187,23 @@ function addToFavorite() {
                             <label id="pwdRepeat_error"></label>
                         </div>
                     </div>
-					                    <div class="item" id="dphone">
-                        <span class="label"><b class="ftx04">*</b>验证手机：</span>
+                    <%--<div class="item" id="dphone">--%>
+                        <%--<span class="label"><b class="ftx04">*</b>验证手机：</span>--%>
 
-                        <div class="fl item-ifo">
-                            <input type="text" id="phone" maxlength="11" name="phone" class="text" tabindex="4" onfocus="phoneFocus();" onKeyup="phoneKeyup();" onblur="phoneBlur();" autocomplete="off"/>
-                            <i class="i-phone"></i>
-                            <label id="phone_succeed" class="blank"></label>
-                            <label id="phone_error"></label>
-                        </div>
-						                        <div class="fl">
-                            <span class="ftx-03 ml5">或</span><a class="ftx-05 ml5 mail-verify"
-                                                                style="text-decoration:underline;" href="javascript:;">验证邮箱</a>
-                        </div>
-						                    </div>
-					<!-- 
+                        <%--<div class="fl item-ifo">--%>
+                            <%--<input type="text" id="phone" maxlength="11" name="phone" class="text" tabindex="4"--%>
+                                   <%--onfocus="phoneFocus();" onKeyup="phoneKeyup();" onblur="phoneBlur();"--%>
+                                   <%--autocomplete="off"/>--%>
+                            <%--<i class="i-phone"></i>--%>
+                            <%--<label id="phone_succeed" class="blank"></label>--%>
+                            <%--<label id="phone_error"></label>--%>
+                        <%--</div>--%>
+                        <%--<div class="fl">--%>
+                            <%--<span class="ftx-03 ml5">或</span><a class="ftx-05 ml5 mail-verify"--%>
+                                                                <%--style="text-decoration:underline;" href="javascript:;">验证邮箱</a>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                    <!--
                     <div id="mobileCodeDiv" class="item hide" style="height: 62px;">
                         <span class="label"><b class="ftx04">*</b>短信验证码：</span>
 
@@ -219,8 +224,8 @@ function addToFavorite() {
                         <span class="clr"></span>
                     </div>
                      -->
-					                </div>
-                                <div class="item item-new">
+                </div>
+                <div class="item item-new">
                     <span class="label">&nbsp;</span>
 
                     <div class="fl item-ifo">
@@ -241,31 +246,34 @@ function addToFavorite() {
             <div class="phone">
                 <img width="180" height="180" src="/images/phone-bg.jpg">
             </div>
-                        <span class="clr"></span>
+            <span class="clr"></span>
         </form>
     </div>
 </div>
 
-    <script type="text/javascript">
+<script type="text/javascript">
     function hello() {
         var helloUrl = "http://passport.jd.com/call/getHelloJson?m=ls";
-        jQuery.ajax({url: helloUrl, dataType: "jsonp", scriptCharset: "gb2312", success: function (a) {
-            if (a && a.info) {
-                $("#loginbar").html(a.info);
+        jQuery.ajax({
+            url: helloUrl, dataType: "jsonp", scriptCharset: "gb2312", success: function (a) {
+                if (a && a.info) {
+                    $("#loginbar").html(a.info);
+                }
+                if (a && a.sso) {
+                    $.each(a.sso, function () {
+                        $.getJSON(this)
+                    })
+                }
             }
-            if (a && a.sso) {
-                $.each(a.sso, function () {
-                    $.getJSON(this)
-                })
-            }
-        }});
+        });
     }
+
     (function ($) {
         $("#shortcut-2013 .menu").Jdropdown({delay: 50});
         //hello();
     })(jQuery);</script>
 <div class="w">
-	<!-- links start -->
+    <!-- links start -->
     <jsp:include page="../commons/footer-links.jsp"></jsp:include>
     <!-- links end -->
 </div>
@@ -315,6 +323,7 @@ function addToFavorite() {
 
 
 
+
 </script>
 
 <script id="box02" type="text/temp">
@@ -342,26 +351,27 @@ function addToFavorite() {
 
 
 
+
 </script>
 <script id="box05" type="text/temp">
 
 </script>
 
 <script>
-  var closeMobileReg='$closeMobileReg';
+    var closeMobileReg = '$closeMobileReg';
     $(function () {
 
         $('.mail-verify').bind('click', function () {
 
             if (validateRegName() && validateFunction.regValidate()) {
-    			oldEmail="";
-    			emailCheckResult="";
-    			oldMobile1="";
-    			mobileResult1="";
-				emailCheckResult="";
+                oldEmail = "";
+                emailCheckResult = "";
+                oldMobile1 = "";
+                mobileResult1 = "";
+                emailCheckResult = "";
                 clearTimeout(countDown1.timer);
-				delayTime1=120;
-				delayFlag1=true;
+                delayTime1 = 120;
+                delayFlag1 = true;
                 jQuery.jdThickBox({
                     type: "text", /*也可以是text,html,image,ajax,json*/
                     width: 500,
@@ -399,29 +409,29 @@ function addToFavorite() {
                                 return;
                             }
                             jQuery.getJSON("../validate/isEmailEngaged?email=" + escape(email) + "&r=" + Math.random(),
-                                    function (result) {
-                                        emailResult = result.success;
-                                        // 邮箱未被验证 可注册
-                                        if (emailResult == 0) {
-                                            $("#mail_error").removeClass().addClass("success").html("此邮箱可用");
-                                            $('#mail_succeed').removeClass().addClass('blank succeed');
-                                            $('#mail').removeClass('highlight2');
-                                        }
-                                        if (emailResult == 1) {
-											$('#mail').removeClass().addClass("text highlight2");
-                                            $('#mail_error').removeClass().addClass("error");
-                                            $("#mail_error").html("该邮箱已被使用，请更换其它邮箱");
-											$('#mail_succeed').removeClass().addClass('blank error-ico');
-                                            return;
-                                        }
-                                        if (emailResult == 2) {
-											$('#mail').removeClass().addClass("text highlight2");
-                                            $('#mail_error').removeClass().addClass("error");
-                                            $("#mail_error").html("邮箱地址不正确，请重新输入");
-											$('#mail_succeed').removeClass().addClass('blank error-ico');
-                                            return;
-                                        }
-                                    });
+                                function (result) {
+                                    emailResult = result.success;
+                                    // 邮箱未被验证 可注册
+                                    if (emailResult == 0) {
+                                        $("#mail_error").removeClass().addClass("success").html("此邮箱可用");
+                                        $('#mail_succeed').removeClass().addClass('blank succeed');
+                                        $('#mail').removeClass('highlight2');
+                                    }
+                                    if (emailResult == 1) {
+                                        $('#mail').removeClass().addClass("text highlight2");
+                                        $('#mail_error').removeClass().addClass("error");
+                                        $("#mail_error").html("该邮箱已被使用，请更换其它邮箱");
+                                        $('#mail_succeed').removeClass().addClass('blank error-ico');
+                                        return;
+                                    }
+                                    if (emailResult == 2) {
+                                        $('#mail').removeClass().addClass("text highlight2");
+                                        $('#mail_error').removeClass().addClass("error");
+                                        $("#mail_error").html("邮箱地址不正确，请重新输入");
+                                        $('#mail_succeed').removeClass().addClass('blank error-ico');
+                                        return;
+                                    }
+                                });
 
                         }
                     });
