@@ -1,7 +1,7 @@
-package com.taotao.web.service;
+package com.taotao.common.service;
 
 
-import com.taotao.web.httpclient.HttpResult;
+import com.taotao.common.httpclient.HttpResult;
 import org.apache.http.NameValuePair;
 import org.apache.http.ParseException;
 import org.apache.http.client.ClientProtocolException;

@@ -2,8 +2,9 @@ package com.taotao.web.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.taotao.common.httpclient.HttpResult;
+import com.taotao.common.service.ApiService;
 import com.taotao.web.UserThreadLocal;
-import com.taotao.web.httpclient.HttpResult;
 import com.taotao.web.pojo.Order;
 import com.taotao.web.pojo.User;
 import org.apache.commons.lang3.StringUtils;

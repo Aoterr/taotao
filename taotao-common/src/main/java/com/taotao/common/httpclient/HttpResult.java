@@ -1,4 +1,4 @@
-package com.taotao.web.httpclient;
+package com.taotao.common.httpclient;
 
 /**
  * Created by YMSX30004 on 2016/12/27.
