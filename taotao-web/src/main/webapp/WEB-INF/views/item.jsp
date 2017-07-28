@@ -204,7 +204,7 @@
                 </li>
                 <li id="choose-btns">
                     <div id="choose-btn-append" class="btn">
-                        <a class="btn-append " id="InitCartUrl" href="http://127.0.0.1/order/${item.id}.html"
+                        <a class="btn-append " id="InitCartUrl" href="http://127.0.0.1:8082/order/${item.id}.html"
                            clstag="shangpin|keycount|product|initcarturl">加入购物车<b></b></a>
                     </div>
                     <div id="choose-btn-easybuy" class="btn"></div>
